@@ -1,0 +1,9 @@
+RESTORE FILELISTONLY FROM DISK = N'/var/opt/mssql/backup/dbholo5749_20250814.bak';
+GO
+RESTORE DATABASE [YourDB]
+FROM DISK = N'/var/opt/mssql/backup/dbholo5749_20250814.bak'
+WITH
+  MOVE N'YourDB'     TO N'/var/opt/mssql/data/YourDB.mdf',
+  MOVE N'YourDB_log' TO N'/var/opt/mssql/data/YourDB_log.ldf',
+  RECOVERY, REPLACE, STATS = 5;
+GO
